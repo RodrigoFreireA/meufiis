@@ -26,22 +26,18 @@ async function realizarRaspagem() {
       <body>
         <h1>Resultados da Raspagem</h1>
         <table>
-          <thead>
-            <tr>
-              <!-- Adicione mais cabeçalhos conforme necessário -->
-            </tr>
-          </thead>
           <tbody>
     `;
 
-    values.forEach((row) => {
+    for (let i = 1; i < values.length; i++) { // Começa a partir do índice 1 para ignorar a primeira linha
+      const row = values[i];
       htmlContent += "<tr>";
       row.forEach((cell) => {
         const cellValue = cell || ''; // Verifica se o valor da célula é nulo ou undefined e substitui por uma string vazia
         htmlContent += `<td>${cellValue}</td>`;
       });
       htmlContent += "</tr>";
-    });
+    }
 
     htmlContent += `
           </tbody>
