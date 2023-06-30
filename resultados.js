@@ -26,10 +26,11 @@ async function realizarRaspagem() {
     for (let i = 1; i < values.length; i++) {
       const row = values[i];
       let rowData = [];
-      row.forEach((cell) => {
+      for (let j = 1; j <= 4; j++) {
+        const cell = row[j];
         const cellValue = cell || '';
         rowData.push(cellValue);
-      });
+      }
       dadosColetados.push(rowData);
     }
 
@@ -64,4 +65,3 @@ app.use(express.static(path.join(__dirname, 'public')));
 setInterval(() => {
   realizarRaspagem();
 }, 1 * 60 * 1000); // Executa a função realizarRaspagem a cada 2 minutos
-
